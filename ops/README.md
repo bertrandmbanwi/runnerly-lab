@@ -1,6 +1,6 @@
 # Operations Examples
 
-Operational assets for installing Runnerly Lab on a generic Linux host or a
+Operational assets for installing Actions Runner Control Plane on a generic Linux host or a
 managed runner host.
 
 The templates in `systemd/` assume the repository is checked out at:
@@ -42,7 +42,7 @@ production deployment path. Override the host and key explicitly:
 
 ```bash
 VM_HOST=runnerly.example.test \
-SSH_KEY=/path/to/runnerly-lab-key \
+SSH_KEY=/path/to/actions-runner-control-plane-key \
 ops/scripts/deploy-linux-vm.example.sh
 ```
 

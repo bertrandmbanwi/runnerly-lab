@@ -37,7 +37,7 @@ test("builds policy report for public guardrails and broad self-hosted findings"
     repositories: [
       {
         owner: "example-org",
-        name: "runnerly-lab",
+        name: "actions-runner-control-plane",
         visibility: "private",
         allowedLabels: ["linux", "arm64", "build-worker"]
       },
@@ -50,7 +50,7 @@ test("builds policy report for public guardrails and broad self-hosted findings"
     ],
     jobs: [
       {
-        repository: "example-org/runnerly-lab",
+        repository: "example-org/actions-runner-control-plane",
         workflow: "CI",
         labels: ["self-hosted", "linux", "arm64"],
         updatedAt: "2026-05-19T01:00:00.000Z"

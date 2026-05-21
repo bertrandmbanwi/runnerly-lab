@@ -7,7 +7,7 @@ test("builds private workflow migration recommendations and excludes public repo
     repositories: [
       {
         owner: "example-org",
-        name: "runnerly-lab",
+        name: "actions-runner-control-plane",
         visibility: "private",
         allowedLabels: ["linux", "arm64"]
       },
@@ -21,7 +21,7 @@ test("builds private workflow migration recommendations and excludes public repo
     jobs: [
       {
         id: "github-job:1",
-        repository: "example-org/runnerly-lab",
+        repository: "example-org/actions-runner-control-plane",
         workflow: "CI",
         status: "completed",
         labels: ["ubuntu-latest"],
@@ -41,7 +41,7 @@ test("builds private workflow migration recommendations and excludes public repo
   assert.equal(inventory.summary.privateRepositoryCount, 1);
   assert.equal(inventory.summary.publicRepositoryCount, 1);
   assert.equal(inventory.summary.candidateCount, 1);
-  assert.deepEqual(inventory.repositories.map((repo) => repo.repository), ["example-org/runnerly-lab"]);
+  assert.deepEqual(inventory.repositories.map((repo) => repo.repository), ["example-org/actions-runner-control-plane"]);
   assert.equal(inventory.repositories[0].workflows[0].recommendation.kind, "candidate");
   assert.equal(inventory.repositories[0].workflows[0].recommendation.targetRunsOn, "[self-hosted, linux, arm64, build-worker]");
 });
@@ -62,7 +62,7 @@ test("flags broad self-hosted workflows that are missing a runner class", () => 
         repository: "example-org/infra-deployments",
         workflow: "Drift Detection",
         status: "completed",
-        runnerId: "runnerly-lab-host",
+        runnerId: "actions-runner-control-plane-host",
         labels: ["self-hosted", "linux", "arm64"],
         updatedAt: "2026-05-19T01:00:00.000Z"
       }

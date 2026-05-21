@@ -1,6 +1,6 @@
-# Runnerly Lab Operator Runbook
+# Actions Runner Control Plane Operator Runbook
 
-This runbook is a generic guide for operating Runnerly Lab on a Linux host. It
+This runbook is a generic guide for operating Actions Runner Control Plane on a Linux host. It
 uses placeholder values only.
 
 ## Local Health Checks
@@ -40,7 +40,7 @@ RUNNERLY_AGENT_TOKEN=replace-with-random-token
 RUNNERLY_ADMIN_TOKEN=replace-with-random-token
 RUNNERLY_SESSION_SECRET=replace-with-random-secret
 RUNNERLY_TOKEN_LOGIN_ENABLED=true
-RUNNERLY_ALLOWED_REPOSITORIES=example-org/runnerly-lab:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner
+RUNNERLY_ALLOWED_REPOSITORIES=example-org/actions-runner-control-plane:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner
 ```
 
 Optional GitHub App / OAuth settings:

@@ -591,10 +591,10 @@ function seedDemoData(db) {
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
-    "github:example-org:runnerly-lab",
+    "github:example-org:actions-runner-control-plane",
     "github",
     "example-org",
-    "runnerly-lab",
+    "actions-runner-control-plane",
     "private",
     JSON.stringify(["linux", "arm64", "build-worker"]),
     createdAt,

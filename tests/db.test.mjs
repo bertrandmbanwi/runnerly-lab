@@ -22,7 +22,7 @@ test("persists runner busy state and job timing facts", () => {
     const repository = upsertRepository(db, {
       provider: "github",
       owner: "example-org",
-      name: "runnerly-lab",
+      name: "actions-runner-control-plane",
       visibility: "private",
       allowedLabels: ["linux", "arm64", "build-worker"]
     });
@@ -121,7 +121,7 @@ test("creates retained SQLite backups", () => {
     upsertRepository(db, {
       provider: "github",
       owner: "example-org",
-      name: "runnerly-lab",
+      name: "actions-runner-control-plane",
       visibility: "private",
       allowedLabels: ["linux", "arm64"]
     });

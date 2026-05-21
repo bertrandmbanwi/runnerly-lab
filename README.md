@@ -1,9 +1,10 @@
-# Runnerly Lab
+# Actions Runner Control Plane
 
-Runnerly Lab is a portfolio edition of a self-hosted GitHub Actions runner
-control plane. It turns runner fleet operations into a product surface:
-live runner status, repository policy, workflow evidence, onboarding commands,
-audit history, and GitHub webhook telemetry in one small dashboard.
+Actions Runner Control Plane is a portfolio edition of a self-hosted GitHub
+Actions runner operations product. It turns runner fleet operations into a
+product surface: live runner status, repository policy, workflow evidence,
+onboarding commands, audit history, and GitHub webhook telemetry in one small
+dashboard.
 
 This repository is intentionally sanitized. It uses demo organizations,
 demo runners, local SQLite data, and placeholder deployment examples so it can
@@ -12,9 +13,9 @@ be reviewed publicly without exposing any real production infrastructure.
 ## Why This Exists
 
 Self-hosted runners are powerful, but most teams operate them through scattered
-scripts, runner labels, GitHub settings pages, and tribal knowledge. Runnerly
-Lab explores what a thin control plane can add on top of GitHub Actions without
-replacing GitHub Actions itself:
+scripts, runner labels, GitHub settings pages, and tribal knowledge. This
+project explores what a thin control plane can add on top of GitHub Actions
+without replacing GitHub Actions itself:
 
 - Which runners are online, idle, busy, stale, or offline?
 - Which repositories are allowed to use self-hosted runners?
@@ -42,7 +43,7 @@ replacing GitHub Actions itself:
 
 ## Quick Start
 
-Runnerly Lab requires Node.js 24 or newer because it uses Node's built-in SQLite
+Actions Runner Control Plane requires Node.js 24 or newer because it uses Node's built-in SQLite
 module.
 
 ```bash
@@ -111,7 +112,7 @@ http://127.0.0.1:8787/api/auth/github/callback
 
 ## GitHub Integration
 
-Runnerly Lab can run in two modes:
+Actions Runner Control Plane can run in two modes:
 
 - **Webhook mode:** ingest GitHub workflow telemetry with a webhook secret.
 - **Management mode:** use a GitHub App installation to reconcile runner state
@@ -126,7 +127,7 @@ RUNNERLY_GITHUB_APP_ID=
 RUNNERLY_GITHUB_INSTALLATION_ID=
 RUNNERLY_GITHUB_APP_PRIVATE_KEY_FILE=/etc/runnerly/github-app.private-key.pem
 RUNNERLY_GITHUB_RUNNER_SCOPE=org
-RUNNERLY_ALLOWED_REPOSITORIES=example-org/runnerly-lab:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner,example-org/utility-scripts:linux+x64+micro+utility
+RUNNERLY_ALLOWED_REPOSITORIES=example-org/actions-runner-control-plane:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner,example-org/utility-scripts:linux+x64+micro+utility
 RUNNERLY_RECONCILE_ENABLED=true
 RUNNERLY_RECONCILE_INTERVAL_MS=300000
 RUNNERLY_RUNNER_HEARTBEAT_INTERVAL_MS=30000

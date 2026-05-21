@@ -53,18 +53,18 @@ test("converts workflow_job payloads into job records", () => {
     {
       id: 123,
       run_id: 456,
-      runner_name: "Runnerly Lab Host",
+      runner_name: "Actions Runner Control Plane Host",
       workflow_name: "Security checks",
       status: "in_progress",
       labels: ["self-hosted", "ARM64"],
       started_at: "2026-05-18T01:00:00Z",
-      html_url: "https://github.com/example-org/runnerly-lab/actions/runs/456/job/123"
+      html_url: "https://github.com/example-org/actions-runner-control-plane/actions/runs/456/job/123"
     },
-    { id: "github:example-org:runnerly-lab" }
+    { id: "github:example-org:actions-runner-control-plane" }
   );
 
   assert.equal(record.id, "github-job:123");
-  assert.equal(record.runnerId, "runnerly-lab-host");
+  assert.equal(record.runnerId, "actions-runner-control-plane-host");
   assert.equal(record.status, "running");
   assert.deepEqual(record.labels, ["self-hosted", "ARM64"]);
 });
@@ -186,7 +186,7 @@ test("updates repository policy state from repository webhooks", async () => {
       action: "privatized",
       repository: {
         owner: { login: "example-org" },
-        name: "runnerly-lab",
+        name: "actions-runner-control-plane",
         private: true
       }
     },

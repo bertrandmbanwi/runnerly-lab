@@ -1,6 +1,6 @@
-# Runnerly Lab Architecture
+# Actions Runner Control Plane Architecture
 
-Runnerly Lab is a small control plane for self-hosted GitHub Actions runners.
+Actions Runner Control Plane is a small control plane for self-hosted GitHub Actions runners.
 GitHub Actions remains the CI engine; Runnerly owns runner visibility, policy
 reporting, onboarding guidance, live operations, and evidence exports.
 

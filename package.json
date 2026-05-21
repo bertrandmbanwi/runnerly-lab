@@ -1,5 +1,5 @@
 {
-  "name": "runnerly-lab",
+  "name": "actions-runner-control-plane",
   "version": "0.1.0",
   "private": true,
   "description": "Portfolio edition of a self-hosted GitHub Actions runner control plane.",

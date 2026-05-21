@@ -1,6 +1,6 @@
 {
-  "runnerId": "runnerly-lab-host",
-  "runnerName": "Runnerly Lab Host",
+  "runnerId": "actions-runner-control-plane-host",
+  "runnerName": "Actions Runner Control Plane Host",
   "labels": ["linux", "arm64", "arm64-lab", "lab", "example-org"],
   "controlPlaneUrl": "http://127.0.0.1:8787",
   "authToken": "replace-with-a-local-shared-token",

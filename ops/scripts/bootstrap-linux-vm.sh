@@ -3,7 +3,7 @@ set -euo pipefail
 
 APP_DIR="${APP_DIR:-/opt/runnerly/app}"
 DATA_DIR="${DATA_DIR:-/opt/runnerly/data}"
-HOSTNAME_VALUE="${RUNNERLY_HOSTNAME:-runnerly-lab}"
+HOSTNAME_VALUE="${RUNNERLY_HOSTNAME:-actions-runner-control-plane}"
 NODE_MAJOR="${NODE_MAJOR:-24}"
 
 if [ "$(id -u)" -ne 0 ]; then
@@ -45,7 +45,7 @@ AGENT_TOKEN="${RUNNERLY_AGENT_TOKEN:-$(openssl rand -hex 32)}"
 ADMIN_TOKEN="${RUNNERLY_ADMIN_TOKEN:-$(openssl rand -hex 32)}"
 SESSION_SECRET="${RUNNERLY_SESSION_SECRET:-$(openssl rand -hex 32)}"
 TOKEN_LOGIN_ENABLED="${RUNNERLY_TOKEN_LOGIN_ENABLED:-true}"
-ALLOWED_REPOSITORIES="${RUNNERLY_ALLOWED_REPOSITORIES:-example-org/runnerly-lab:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner}"
+ALLOWED_REPOSITORIES="${RUNNERLY_ALLOWED_REPOSITORIES:-example-org/actions-runner-control-plane:linux+arm64+build-worker,example-org/security-scanner:linux+arm64+scanner}"
 GITHUB_WEBHOOK_SECRET="${RUNNERLY_GITHUB_WEBHOOK_SECRET:-}"
 PUBLIC_WEBHOOK_URL="${RUNNERLY_PUBLIC_WEBHOOK_URL:-}"
 GITHUB_APP_ID="${RUNNERLY_GITHUB_APP_ID:-}"
@@ -115,7 +115,7 @@ if [ -s "${EXISTING_AGENT_CONFIG}" ] || [ -f /opt/actions-runner/.runner ]; then
           runnerDirectory: "/opt/actions-runner",
           owner: process.env.RUNNERLY_GITHUB_OWNER ?? "example-org",
           repo: process.env.RUNNERLY_GITHUB_RUNNER_SCOPE === "repo"
-            ? process.env.RUNNERLY_GITHUB_REPO ?? "runnerly-lab"
+            ? process.env.RUNNERLY_GITHUB_REPO ?? "actions-runner-control-plane"
             : null
         }];
       } catch {

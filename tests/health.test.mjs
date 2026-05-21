@@ -19,7 +19,7 @@ test("reports healthy control plane with public repository budget notice", () =>
       ],
       repositories: [
         { owner: "example-org", name: "public-status", visibility: "public" },
-        { owner: "example-org", name: "runnerly-lab", visibility: "private" }
+        { owner: "example-org", name: "actions-runner-control-plane", visibility: "private" }
       ]
     }
   });

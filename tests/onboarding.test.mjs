@@ -7,7 +7,7 @@ test("summarizes repository runner and webhook readiness", () => {
     repositories: [
       {
         owner: "example-org",
-        name: "runnerly-lab",
+        name: "actions-runner-control-plane",
         visibility: "private",
         allowedLabels: ["linux", "arm64", "managed"]
       }
@@ -23,7 +23,7 @@ test("summarizes repository runner and webhook readiness", () => {
     ],
     jobs: [
       {
-        repository: "example-org/runnerly-lab",
+        repository: "example-org/actions-runner-control-plane",
         status: "completed",
         updatedAt: "2026-05-18T01:10:00.000Z"
       }
@@ -32,7 +32,7 @@ test("summarizes repository runner and webhook readiness", () => {
       {
         action: "github.workflow_job.completed",
         target: "github-job:1",
-        payload: { repository: "example-org/runnerly-lab", status: "completed" },
+        payload: { repository: "example-org/actions-runner-control-plane", status: "completed" },
         createdAt: "2026-05-18T01:10:00.000Z"
       }
     ],
@@ -84,8 +84,8 @@ test("treats org-scoped runners as repository coverage", () => {
     ],
     runners: [
       {
-        id: "runnerly-lab-host",
-        name: "runnerly-lab-host",
+        id: "actions-runner-control-plane-host",
+        name: "actions-runner-control-plane-host",
         labels: ["self-hosted", "linux", "arm64"],
         status: "online",
         lastSeenAt: "2026-05-18T01:00:00.000Z",
@@ -124,7 +124,7 @@ test("does not treat a different repo-scoped runner as repository coverage", () 
         status: "online",
         metadata: {
           githubRunner: {
-            repositories: ["example-org/runnerly-lab"]
+            repositories: ["example-org/actions-runner-control-plane"]
           }
         }
       }
