@@ -1,0 +1,18 @@
+{
+  "name": "runnerly-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portfolio edition of a self-hosted GitHub Actions runner control plane.",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning apps/control-plane/server.mjs",
+    "agent:once": "node apps/agent/agent.mjs --once",
+    "deploy:example": "bash ops/scripts/deploy-linux-vm.example.sh",
+    "restore:drill": "node --disable-warning=ExperimentalWarning scripts/restore-drill.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --disable-warning=ExperimentalWarning --test"
+  }
+}

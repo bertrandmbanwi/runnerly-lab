@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Runnerly</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">R</span>
+          <div>
+            <strong>Runnerly</strong>
+            <span>Control plane</span>
+          </div>
+        </div>
+        <nav aria-label="Primary">
+          <a href="#live">Live</a>
+          <a class="active" href="#fleet">Fleet</a>
+          <a href="#github">GitHub</a>
+          <a href="#policy">Policy</a>
+          <a href="#onboarding">Onboarding</a>
+          <a href="#workflows">Workflows</a>
+          <a href="#repositories">Repositories</a>
+          <a href="#jobs">Jobs</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#audit">Audit</a>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div class="topbar-copy">
+            <p class="eyebrow">Runnerly Lab</p>
+            <h1>Runner operations</h1>
+            <p>Self-hosted fleet, policy, workflow evidence, and onboarding.</p>
+          </div>
+          <div class="topbar-actions">
+            <span id="liveStatus" class="live-status waiting">Live updates connecting</span>
+            <button id="reconcileButton" type="button" aria-label="Reconcile GitHub state">Reconcile GitHub</button>
+            <button id="refreshButton" type="button" aria-label="Refresh dashboard">Refresh data</button>
+          </div>
+        </header>
+
+        <section class="summary-grid" aria-label="Summary">
+          <article>
+            <span>Self-hosted online</span>
+            <strong id="onlineRunnerCount">0</strong>
+          </article>
+          <article>
+            <span>Busy slots</span>
+            <strong id="busyRunnerCount">0</strong>
+          </article>
+          <article>
+            <span>Private repos</span>
+            <strong id="privateRepositoryCount">0</strong>
+          </article>
+          <article>
+            <span>Queued jobs</span>
+            <strong id="queuedJobCount">0</strong>
+          </article>
+          <article>
+            <span>Running jobs</span>
+            <strong id="runningJobCount">0</strong>
+          </article>
+          <article>
+            <span>Median pickup</span>
+            <strong id="medianPickupSeconds">--</strong>
+          </article>
+          <article>
+            <span>Policy issues</span>
+            <strong id="policyIssueCount">0</strong>
+          </article>
+        </section>
+
+        <section class="panel" id="live">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Live operations</p>
+              <h2>Signals and alerts</h2>
+            </div>
+            <span id="healthStatus" class="status waiting">Waiting</span>
+          </div>
+          <div class="live-grid">
+            <div id="liveEventDetails" class="live-card"></div>
+            <div id="webhookEventDetails" class="live-card"></div>
+          </div>
+          <div id="healthAlerts" class="alert-list"></div>
+        </section>
+
+        <section class="panel" id="fleet">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Fleet</p>
+              <h2>Self-hosted fleet</h2>
+            </div>
+            <span id="lastUpdated" class="timestamp">Waiting for data</span>
+          </div>
+          <div id="runnerList" class="runner-list"></div>
+        </section>
+
+        <section class="panel" id="github">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">GitHub</p>
+              <h2>Integration</h2>
+            </div>
+            <span id="githubStatus" class="status offline">Not configured</span>
+          </div>
+          <div id="reconcileStatus" class="ops-status"></div>
+          <div id="githubDetails" class="detail-grid"></div>
+        </section>
+
+        <section class="panel" id="policy">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Policy</p>
+              <h2>Runner guardrails</h2>
+            </div>
+            <div id="policySummary" class="compact-metrics"></div>
+          </div>
+          <div class="table-wrap">
+            <table class="policy-table">
+              <thead>
+                <tr>
+                  <th>Scope</th>
+                  <th>Status</th>
+                  <th>Guardrail</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody id="policyRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" id="onboarding">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Onboarding</p>
+              <h2>Private repository readiness</h2>
+            </div>
+            <span id="onboardingUpdated" class="timestamp">Waiting for data</span>
+          </div>
+          <div id="onboardingCards" class="onboarding-grid"></div>
+        </section>
+
+        <section class="panel" id="workflows">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Migration</p>
+              <h2>Private workflow inventory</h2>
+            </div>
+            <div id="workflowSummary" class="compact-metrics"></div>
+          </div>
+          <div class="table-wrap">
+            <table class="workflow-table">
+              <thead>
+                <tr>
+                  <th>Repository</th>
+                  <th>Workflow</th>
+                  <th>Current runner</th>
+                  <th>Recommendation</th>
+                  <th>Target</th>
+                </tr>
+              </thead>
+              <tbody id="workflowRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="split">
+          <article class="panel" id="repositories">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Policy</p>
+                <h2>Repository allowlist</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Repository</th>
+                    <th>Visibility</th>
+                    <th>Labels</th>
+                  </tr>
+                </thead>
+                <tbody id="repoRows"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="jobs">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">CI</p>
+                <h2>Workflow jobs</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                  <th>Workflow</th>
+                  <th>Repo</th>
+                  <th>Runner</th>
+                  <th>Status</th>
+                  <th>Timing</th>
+                </tr>
+              </thead>
+                <tbody id="jobRows"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" id="evidence">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Evidence</p>
+              <h2>Exports and backups</h2>
+            </div>
+            <button id="backupButton" type="button">Create backup</button>
+          </div>
+          <div class="evidence-grid">
+            <article>
+              <h3>Exports</h3>
+              <div class="export-links" aria-label="Evidence exports">
+                <a href="/api/exports/evidence.json">Evidence JSON</a>
+                <a href="/api/exports/runners.csv">Runners CSV</a>
+                <a href="/api/exports/repositories.csv">Repositories CSV</a>
+                <a href="/api/exports/jobs.csv">Jobs CSV</a>
+                <a href="/api/exports/audit.csv">Audit CSV</a>
+              </div>
+            </article>
+            <article>
+              <h3>Backups</h3>
+              <div id="backupStatus" class="backup-status"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Audit</p>
+              <h2>Operator events</h2>
+            </div>
+          </div>
+          <ol id="auditRows" class="audit-list"></ol>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

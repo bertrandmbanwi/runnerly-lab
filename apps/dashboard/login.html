@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Runnerly Login</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="login-page">
+    <main class="login-shell">
+      <form id="loginForm" class="login-panel">
+        <div class="brand compact">
+          <span class="brand-mark">R</span>
+          <div>
+            <strong>Runnerly</strong>
+            <span>Control Plane</span>
+          </div>
+        </div>
+        <h1>Sign in</h1>
+        <a id="githubLogin" class="login-github" href="/api/auth/github/start">Continue with GitHub</a>
+        <div id="loginDivider" class="login-divider"><span>or</span></div>
+        <label>
+          Access token
+          <input id="tokenInput" name="token" type="password" autocomplete="current-password" required autofocus>
+        </label>
+        <button type="submit">Continue</button>
+        <p id="loginMessage" class="form-message" role="status"></p>
+      </form>
+    </main>
+    <script src="/login.js" type="module"></script>
+  </body>
+</html>

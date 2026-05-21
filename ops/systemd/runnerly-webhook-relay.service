@@ -1,0 +1,22 @@
+[Unit]
+Description=Runnerly GitHub webhook relay
+After=network-online.target runnerly-control-plane.service
+Wants=network-online.target
+ConditionPathExists=/etc/runnerly/webhook-relay.env
+
+[Service]
+Type=simple
+User=runnerly
+Group=runnerly
+WorkingDirectory=/opt/runnerly/app
+Environment=SMEE_TARGET_URL=http://127.0.0.1:8787/api/github/webhook
+EnvironmentFile=/etc/runnerly/webhook-relay.env
+ExecStart=/usr/bin/env smee --url ${SMEE_URL} --target ${SMEE_TARGET_URL}
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

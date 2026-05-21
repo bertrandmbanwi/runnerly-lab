@@ -1,0 +1,14 @@
+{
+  "runnerId": "runnerly-lab-host",
+  "runnerName": "Runnerly Lab Host",
+  "labels": ["linux", "arm64", "arm64-lab", "lab", "example-org"],
+  "controlPlaneUrl": "http://127.0.0.1:8787",
+  "authToken": "replace-with-a-local-shared-token",
+  "diskPath": "/",
+  "services": ["runnerly-control-plane.service"],
+  "commands": [
+    { "name": "node", "bin": "node", "args": ["--version"] },
+    { "name": "npm", "bin": "npm", "args": ["--version"] },
+    { "name": "git", "bin": "git", "args": ["--version"] }
+  ]
+}
